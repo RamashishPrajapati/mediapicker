@@ -1,0 +1,82 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs'
+}
+
+android {
+    /*compileSdkVersion 30
+    buildToolsVersion "29.0.3"*/
+    compileSdkVersion rootProject.compileSdk
+
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdk
+        targetSdkVersion rootProject.targetSdk
+        versionCode 1
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    flavorDimensions "default"
+    // If you need to add more flavors, consider using flavor dimensions.
+    productFlavors {
+        alpha {
+            dimension "default"
+            applicationId "com.ram.mediapicker.alpha"
+            resValue "string", "app_name", "α Mediapicker"
+            versionName "1.0.0 alpha"
+            manifestPlaceholders = [
+                    appIcon: "@drawable/alpha_mediapicker_icon"
+            ]
+        }
+        prod {
+            dimension "default"
+            applicationId "com.ram.mediapicker"
+            resValue "string", "app_name", "Mediapicker"
+            versionName "1.0.3 "
+            manifestPlaceholders = [
+                    appIcon: "@drawable/release_mediapicker_icon"
+            ]
+        }
+    }
+
+    // Remove alphaRelease as it's not needed.
+    android.variantFilter { variant ->
+        if (variant.buildType.name == 'release'
+                && variant.getFlavors().get(0).name == 'alpha') {
+            variant.setIgnore(true)
+        }
+    }
+
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:$rootProject.core_ktx"
+    implementation "androidx.appcompat:appcompat:$rootProject.appcompat"
+    implementation "com.google.android.material:material:$rootProject.material"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintlayout"
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.junit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espresso"
+
+    /* adding project library to share with app module*/
+    implementation project(path: ':projectlibrary')
+}
