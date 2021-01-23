@@ -7,10 +7,8 @@ plugins {
 }
 
 android {
-    /*compileSdkVersion 30
-    buildToolsVersion "29.0.3"*/
-    compileSdkVersion rootProject.compileSdk
 
+    compileSdkVersion rootProject.compileSdk
 
     defaultConfig {
         minSdkVersion rootProject.minSdk
@@ -42,7 +40,7 @@ android {
             resValue "string", "app_name", "α Mediapicker"
             versionName "1.0.0 alpha"
             manifestPlaceholders = [
-                    appIcon: "@drawable/alpha_mediapicker_icon"
+                    appIcon: "@drawable/alpha_icon"
             ]
         }
         prod {
@@ -51,7 +49,7 @@ android {
             resValue "string", "app_name", "Mediapicker"
             versionName "1.0.3 "
             manifestPlaceholders = [
-                    appIcon: "@drawable/release_mediapicker_icon"
+                    appIcon: "@drawable/release_icon"
             ]
         }
     }
