@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-            //Testing
 
     }
 
@@ -42,7 +41,6 @@ class MainActivity : AppCompatActivity() {
     ) {
         if (requestCode == AppConstants.REQUEST_CODE_PERMISSIONS) {
             if (allPermissionsGranted()) {
-        //Testing
             } else {
                 CGlobal_lib.getInstance(applicationContext)!!
                         .showMessage("Please grant the permission...")
