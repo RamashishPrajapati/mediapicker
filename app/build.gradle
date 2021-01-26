@@ -75,6 +75,12 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$rootProject.junit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espresso"
 
+    //Coil library
+    implementation("io.coil-kt:coil-video:1.0.0")
+    implementation("io.coil-kt:coil:1.0.0")
+    implementation("io.coil-kt:coil-gif:1.0.0")
+    implementation("io.coil-kt:coil-svg:1.0.0")
+
     /* adding project library to share with app module*/
     implementation project(path: ':projectlibrary')
 }

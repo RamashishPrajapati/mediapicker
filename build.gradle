@@ -9,7 +9,7 @@ buildscript {
 
         /* Sdk and tools*/
         compileSdk = 30
-        minSdk = 21
+        minSdk = 23
         targetSdk = 30
 
         //design dependencies
